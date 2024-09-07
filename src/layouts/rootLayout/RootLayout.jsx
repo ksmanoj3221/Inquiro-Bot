@@ -4,6 +4,7 @@ import {
   ClerkProvider,
   SignedIn,
   SignedOut,
+  SignIn,
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
@@ -17,17 +18,18 @@ if (!PUBLISHABLE_KEY) {
 
 const RootLayout = () => {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      afterSignOutUrl="/"
+      // signInUrl="/sign-in"
+    >
       <div className="rootLayout">
         <header>
           <Link to="/" className="logo">
             <img src="/logo.png" alt="" />
-            <span>LAMA AI</span>
+            <span>Inquiro BOT</span>
           </Link>
           <div className="user">
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
