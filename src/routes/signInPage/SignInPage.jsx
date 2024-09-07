@@ -1,7 +1,7 @@
-import "./signInPage.css";
+import "./signInPage.scss";
 
 const SignInPage = () => {
-  return <div>Sign In Page</div>;
+  return <div className="signInPage">SignInPage</div>;
 };
 
 export default SignInPage;
