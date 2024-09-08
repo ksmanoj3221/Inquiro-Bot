@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import "./chatPage.css";
-import { useEffect } from "react";
+import NewPrompt from "../../components/newPrompt/NewPrompt";
 
 const ChatPage = () => {
   const endRef = useRef(null);
@@ -13,7 +13,6 @@ const ChatPage = () => {
     <div className="chatPage">
       <div className="wrapper">
         <div className="chat">
-          <div className="message">Test Message from ai</div>
           <div className="message user">Test Message from user</div>
           <div className="message">Test Message ai</div>
           <div className="message user">Test Message from user</div>
@@ -26,12 +25,11 @@ const ChatPage = () => {
           <div className="message">Test Message ai</div>
           <div className="message user">Test Message from user</div>
           <div className="message">Test Message from ai</div>
-          <div className="message user">Test Message from user</div>
-          <div className="message">Test Message ai</div>
-          <div className="message user">Test Message from user</div>
+
           <div ref={endRef} />
         </div>
       </div>
+      <NewPrompt />
     </div>
   );
 };
