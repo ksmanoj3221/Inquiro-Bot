@@ -2,11 +2,23 @@ import express from 'express';
 import ImageKit from 'imagekit';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import mongoose from 'mongoose';
 
 dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO);
+        console.log("Connected to MongoDB");
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+
 
 app.use(cors({
     origin: process.env.CLIENT_URL
@@ -25,5 +37,6 @@ app.get('/api/upload', (req, res) => {
 
 
 app.listen(port, () => {
+    connect();
     console.log(`Server running on port: ${port}`);
 })
