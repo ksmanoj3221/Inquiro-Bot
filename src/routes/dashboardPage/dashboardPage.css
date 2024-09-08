@@ -18,6 +18,7 @@
       align-items: center;
       gap: 20px;
       opacity: 0.2;
+      margin-bottom: 60px;
 
       img {
         width: 64px;
@@ -37,8 +38,10 @@
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
       gap: 50px;
+      margin-top: -60px;
+      margin-bottom: 60px;
 
       .option {
         flex: 1;
@@ -61,10 +64,12 @@
   }
   .formContainer {
     margin-top: auto;
-    width: 50%;
+    width: 60%;
+    height: 55px;
     background-color: #2c2937;
     border-radius: 20px;
     display: flex;
+    margin-bottom: 20px;
 
     form {
       width: 100%;
