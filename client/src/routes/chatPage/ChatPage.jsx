@@ -27,9 +27,9 @@ const ChatPage = () => {
           <div className="message">Test Message from ai</div>
 
           <div ref={endRef} />
+          <NewPrompt />
         </div>
       </div>
-      <NewPrompt />
     </div>
   );
 };

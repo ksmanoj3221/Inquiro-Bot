@@ -3,8 +3,12 @@ import "./newPrompt.css";
 import Upload from "../upload/Upload";
 import { IKImage } from "imagekitio-react";
 import model from "../../lib/gemini";
+// import Markdown from "react-markdown";
+// import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const NewPrompt = () => {
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
   const [img, setImg] = useState({
     isLoading: false,
     error: "",
@@ -17,12 +21,22 @@ const NewPrompt = () => {
     endRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const add = async () => {
-    const prompt = "Write a story about a magic backpack.";
-    const result = await model.generateContent(prompt);
+  const add = async (text) => {
+    setQuestion(text);
+    const result = await model.generateContent(text);
     const response = await result.response;
-    const text = response.text();
-    console.log(text);
+    setAnswer(response.text());
+    console.log(response.text());
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const text = e.target.text.value;
+    if (!text) return;
+
+    add(text);
+    e.target.reset();
   };
 
   return (
@@ -36,12 +50,20 @@ const NewPrompt = () => {
           transformation={[{ width: 380 }]}
         />
       )}
-      <button onClick={add}>Test Button</button>
+
+      {question && <div className="message user">{question}</div>}
+      {answer && <div className="message">{answer}</div>}
+      {/* {answer && (
+        <div className="message">
+          <Markdown>{answer}</Markdown>
+        </div>
+      )} */}
+
       <div className="endChat" ref={endRef}></div>
-      <form action="" className="newForm">
+      <form action="" className="newForm" onSubmit={handleSubmit}>
         <Upload setImg={setImg} />
         <input id="file" type="file" multiple={false} hidden />
-        <input type="text" placeholder="Ask me anything" />
+        <input type="text" name="text" placeholder="Ask me anything" />
         <button>
           <img src="/arrow.png" alt="" />
         </button>
