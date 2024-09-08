@@ -7,10 +7,33 @@
 
   .wrapper {
     flex: 1;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: 100%;
     display: flex;
     justify-content: center;
+
+    /* Scrollbar styling */
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #2c2937; /* Background color of scrollbar track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #888; /* Thumb (draggable part) */
+      border-radius: 10px; /* Make it round */
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #555; /* Thumb color on hover */
+    }
+
+    &::-webkit-scrollbar-corner {
+      background-color: #2c2937; /* Match the color of the scrollbars */
+    }
 
     .chat {
       width: 50%;
