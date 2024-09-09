@@ -1,6 +1,9 @@
 import "./dashboardPage.css";
+import { useAuth } from "@clerk/clerk-react";
 
 const DashboardPage = () => {
+  const { userId } = useAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const text = e.target.text.value;
@@ -12,7 +15,7 @@ const DashboardPage = () => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ text: text }),
+        body: JSON.stringify({ userId, text: text }),
       });
 
       if (!response.ok) {
