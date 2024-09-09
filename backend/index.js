@@ -35,6 +35,12 @@ app.get('/api/upload', (req, res) => {
     res.send(result);
 });
 
+app.use(express.json());
+app.post('/api/chats', (req, res) => {
+    const { text } = req.body;
+    console.log(text);
+});
+
 
 app.listen(port, () => {
     connect();
